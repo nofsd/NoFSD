@@ -1,0 +1,13 @@
+/.DS_Store
+/.dart_tool
+/.flutter-plugins
+/.flutter-plugins-dependencies
+/.git
+/.idea
+/.metadata
+/.packages
+/cores_app.txt
+/build/
+.last_build_id
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
