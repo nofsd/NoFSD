@@ -23,6 +23,7 @@ class MobilesProvider with ChangeNotifier {
   // se alguem chama o metódo para add
   Future<void> addMobile(MobileModel newMobile) async {
     //await substitui o then
+
     final response = await http.post(
       "$_baseUrl.json?auth=$_token",
       body: json.encode({

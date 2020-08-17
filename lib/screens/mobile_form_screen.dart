@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hack_infor/models/mobile_model.dart';
 import 'package:hack_infor/provider/mobiles_provider.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class MobileFormScreen extends StatefulWidget {
@@ -213,6 +214,26 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
                 },
                 //onSaved vai executar o _saveForm
                 onSaved: (value) => _formData['numero'] = value,
+              ),
+              GestureDetector(
+                child: Container(
+                  width: 140,
+                  height: 140,
+                  child: Icon(
+                    Icons.camera_alt,
+                    size: 75,
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                onTap: () {
+                  ImagePicker()
+                      .getImage(source: ImageSource.camera)
+                      .then((file) {
+                    if (file == null) return;
+                  });
+                },
               ),
             ],
           ),
