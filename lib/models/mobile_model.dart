@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:hack_infor/models/chip_model.dart';
 
-class MobileModel {
+class MobileModel with ChangeNotifier {
   final String id;
   final String modelo;
   final String marca;
@@ -14,22 +15,20 @@ class MobileModel {
   final String numero;
   final String ddd;
   final String pais;
-  final ChipModel chip;
 
   MobileModel({
     this.id,
-    this.modelo,
-    this.marca,
-    this.imei,
+    @required this.modelo,
+    @required this.marca,
+    @required this.imei,
     this.vouncher,
     this.tradeIn,
-    this.usuario,
-    this.prv,
-    this.operadora,
+    @required this.usuario,
+    @required this.prv,
+    @required this.operadora,
     this.pin,
-    this.numero,
-    this.ddd,
+    @required this.numero,
+    @required this.ddd,
     this.pais,
-    this.chip,
   });
 }

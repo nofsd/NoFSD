@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hack_infor/auth/provider/auth.dart';
 import 'package:hack_infor/auth/screens/auth_home_screen.dart';
 import 'package:hack_infor/provider/mobiles_provider.dart';
@@ -25,12 +25,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => new Auth(),
         ),
-        ChangeNotifierProxyProvider(
+        ChangeNotifierProxyProvider<Auth, MobilesProvider>(
           create: (_) => new MobilesProvider(),
           update: (ctx, auth, previousMobiles) => new MobilesProvider(
             auth.token,
-            auth.userId,
-            previousMobiles.items,
+            previousMobiles.itemsMobile,
           ),
         ),
       ],

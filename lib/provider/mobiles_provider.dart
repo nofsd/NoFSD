@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:hack_infor/exceptions/http_exception.dart';
 import 'package:hack_infor/models/mobile_model.dart';
 import 'package:hack_infor/utils/constantes.dart';
 import 'package:http/http.dart' as http;
@@ -10,45 +11,13 @@ class MobilesProvider with ChangeNotifier {
   List<MobileModel> _itemsMobiles = [];
 
   String _token;
-  String _userId;
 
-  MobilesProvider([this._token, this._userId, this._itemsMobiles = const []]);
+  MobilesProvider([this._token, this._itemsMobiles = const []]);
 
   List<MobileModel> get itemsMobile => [..._itemsMobiles];
 
   int get itemsCount {
     return _itemsMobiles.length;
-  }
-
-  //carregar os aparelho dentro de items.
-  Future<void> loadMobiles() async {
-    final response = await http.get("$_baseUrl.json?auth=$_token");
-    Map<String, dynamic> data = json.decode(response.body);
-    final favResponse = await http.get(
-        "${Constantes.BASE_API_URL}/userFavorites/$_userId.json?auth=$_token");
-    final favMap = json.decode(favResponse.body);
-
-    // abaixo ele vai limpar a lista de aparelho para não duplicar a lista ao ser chamada.
-    _itemsMobiles.clear();
-    if (data != null) {
-      data.forEach((mobileId, mobileData) {
-        final isFavorite = favMap == null ? false : favMap[mobileId] ?? false;
-        _itemsMobiles.add(MobileModel(
-          id: mobileId,
-          modelo: mobileData['modelo'],
-          marca: mobileData['marca'],
-          imei: mobileData['imei'],
-          usuario: mobileData['usuario'],
-          prv: mobileData['prv'],
-          operadora: mobileData['operadora'],
-          ddd: mobileData['ddd'],
-          numero: mobileData['numero'],
-        ));
-      });
-      //print(json.decode(response.body));
-      notifyListeners();
-    }
-    return Future.value();
   }
 
   // se alguem chama o metódo para add
@@ -120,7 +89,7 @@ class MobilesProvider with ChangeNotifier {
       if (response.statusCode >= 400) {
         _itemsMobiles.insert(index, mobile);
         notifyListeners();
-        //throw HttpException('Ocorreu um erro na exclusão do aparelho.');
+        throw HttpException('Ocorreu um erro na exclusão do aparelho.');
       }
     }
   }
