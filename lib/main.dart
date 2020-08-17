@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hack_infor/auth/provider/auth.dart';
 import 'package:hack_infor/auth/screens/auth_home_screen.dart';
+import 'package:hack_infor/provider/mobiles_provider.dart';
 import 'package:hack_infor/screens/home_screen.dart';
+import 'package:hack_infor/screens/mobile_form_screen.dart';
 import 'package:hack_infor/utils/app_rotas.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
-  Firestore.instance.collection('usuarios').document('pontuacao').setData({
-    "Carlos": "90",
-    "Silvana": "80",
-  });
+  //Firestore.instance.collection('usuarios').document('pontuacao').setData({
+  //  "Fagner": "90",
+  //  "Lorena": "80",
+  //});
 }
 
 class MyApp extends StatelessWidget {
@@ -22,6 +24,14 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => new Auth(),
+        ),
+        ChangeNotifierProxyProvider(
+          create: (_) => new MobilesProvider(),
+          update: (ctx, auth, previousMobiles) => new MobilesProvider(
+            auth.token,
+            auth.userId,
+            previousMobiles.items,
+          ),
         ),
       ],
       child: MaterialApp(
@@ -37,7 +47,7 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline6: TextStyle(
                   fontSize: 25,
-                  color: Colors.blueGrey[50],
+                  color: Colors.blueGrey[300],
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Raleway',
                 ),
@@ -47,6 +57,7 @@ class MyApp extends StatelessWidget {
         routes: {
           AppRotas.AUTH_HOME: (ctx) => AuthHomeScreen(),
           AppRotas.HOME: (ctx) => HomeScreen(),
+          AppRotas.MOBILE_FORM: (ctx) => MobileFormScreen(),
         },
       ),
     );

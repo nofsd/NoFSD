@@ -83,7 +83,10 @@ class AppDrawer extends StatelessWidget {
                       darkMode: true, // default: false
                     )
                   : RaisedButton(
-                      onPressed: () => firebaseService.logout(),
+                      onPressed: () {
+                        firebaseService.logout();
+                        Navigator.of(context).pushNamed(AppRotas.AUTH_HOME);
+                      },
                       child: Text('Sair'),
                     );
             },
@@ -91,12 +94,12 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             title: Text(
-              "Equipamentos",
+              "Aparelhos Mobile",
               textAlign: TextAlign.center,
             ),
             trailing: Icon(Icons.computer),
             onTap: () {
-              Navigator.of(context).pushNamed(AppRotas.HOME);
+              Navigator.of(context).pushNamed(AppRotas.MOBILE_FORM);
             },
           ),
         ],

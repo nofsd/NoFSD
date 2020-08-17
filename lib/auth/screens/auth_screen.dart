@@ -14,10 +14,9 @@ class AuthScreeen extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage('assets/images/equip_comp_01.png'), fit: BoxFit.cover
-      )
-    ),
+            image: DecorationImage(
+                image: AssetImage('assets/images/equip_comp_01.png'),
+                fit: BoxFit.cover)),
         child: Stack(
           children: [
             //Image.asset('assets/images/equip_comp_01.png',fit: BoxFit.cover,),
@@ -26,9 +25,9 @@ class AuthScreeen extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     //Colors.teal,
-                    Colors.black12,
                     Colors.teal,
                     Colors.black12,
+                    Colors.teal,
                   ],
                 ),
               ),
@@ -63,7 +62,7 @@ class AuthScreeen extends StatelessWidget {
                         'NoFSD',
                         style: TextStyle(
                             color: Colors.white70,
-                                //Theme.of(context).accentTextTheme.headline6.color,
+                            //Theme.of(context).accentTextTheme.headline6.color,
                             fontSize: 45,
                             fontFamily: 'Anton'),
                       ),
