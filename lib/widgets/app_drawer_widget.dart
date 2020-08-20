@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:hack_infor/auth/firebase/firebase_service.dart';
 import 'package:hack_infor/utils/app_rotas.dart';
 
 class AppDrawer extends StatelessWidget {
+  get body => null;
+
   @override
   Widget build(BuildContext context) {
     FirebaseService firebaseService = FirebaseService();
@@ -19,6 +22,26 @@ class AppDrawer extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             automaticallyImplyLeading: false,
+            actions: <Widget>[
+              new IconButton(
+                  icon: new Icon(Icons.home),
+                  onPressed: () {
+                    firebaseService.logout();
+                    Navigator.of(context).pushNamed(AppRotas.AUTH_HOME);
+                  })
+            ],
+
+            //floatingActionButton: FloatingActionButton(onPressed: () {
+            //  Navigator.pop(context);
+            //}),
+            //leading: Icon(Icons.computer),
+          ),
+          RaisedButton(
+            onPressed: () {
+              firebaseService.logout();
+              Navigator.of(context).pushNamed(AppRotas.AUTH_HOME);
+            },
+            child: Icon(Icons.home),
           ),
           Divider(),
           Image.asset(
@@ -100,6 +123,36 @@ class AppDrawer extends StatelessWidget {
             trailing: Icon(Icons.computer),
             onTap: () {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_FORM);
+            },
+          ),
+          ListTile(
+            title: Text(
+              "Chip's",
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(Icons.computer),
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRotas.MOBILE_CHIPS);
+            },
+          ),
+          ListTile(
+            title: Text(
+              "Usuarios",
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(Icons.computer),
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRotas.MOBILE_USUARIOS);
+            },
+          ),
+          ListTile(
+            title: Text(
+              "Controle",
+              textAlign: TextAlign.center,
+            ),
+            trailing: Icon(Icons.computer),
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRotas.MOBILE_CONTROLE);
             },
           ),
         ],
