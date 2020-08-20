@@ -38,6 +38,7 @@ class MobilesProvider with ChangeNotifier {
           operadora: mobileData['operadora'],
           ddd: mobileData['ddd'],
           numero: mobileData['numero'],
+          status: mobileData['status'],
         ));
       });
       //print(json.decode(response.body));
@@ -61,6 +62,7 @@ class MobilesProvider with ChangeNotifier {
         'operadora': newMobile.operadora,
         'ddd': newMobile.ddd,
         'numero': newMobile.numero,
+        'status': newMobile.status,
       }),
     );
 
@@ -74,6 +76,7 @@ class MobilesProvider with ChangeNotifier {
       operadora: newMobile.operadora,
       ddd: newMobile.ddd,
       numero: newMobile.numero,
+      status: newMobile.status,
     ));
     //notifyListeners = vai notificar todos os interessados quando o evento for chamado
     notifyListeners();
@@ -97,6 +100,7 @@ class MobilesProvider with ChangeNotifier {
           'operadora': mobile.operadora,
           'ddd': mobile.ddd,
           'numero': mobile.numero,
+          'status': mobile.status,
         }),
       );
       _itemsMobiles[index] = mobile;

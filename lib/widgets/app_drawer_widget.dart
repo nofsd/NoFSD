@@ -44,8 +44,29 @@ class AppDrawer extends StatelessWidget {
             child: Icon(Icons.home),
           ),
           Divider(),
-          Image.asset(
-            "assets/images/logo_nome_01.png",
+          Container(
+            margin: EdgeInsets.only(bottom: 30),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.black45,
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 8, color: Colors.black26, offset: Offset(0, 7)),
+              ],
+            ),
+            padding: EdgeInsets.symmetric(
+              vertical: 7,
+              horizontal: 70,
+            ),
+            transform: Matrix4.rotationZ(-8 * 3.14 / 180)..translate(-10.0),
+            child: Text(
+              'NoFSD',
+              style: TextStyle(
+                  color: Colors.white70,
+                  //Theme.of(context).accentTextTheme.headline6.color,
+                  fontSize: 45,
+                  fontFamily: 'Anton'),
+            ),
           ),
           Divider(),
           Container(
@@ -125,6 +146,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_FORM);
             },
           ),
+          Divider(),
           ListTile(
             leading: Icon(Icons.edit),
             title: Text('Gerenciar Mobiles'),
@@ -133,6 +155,7 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(AppRotas.GERENCIAR_MOBILES);
             },
           ),
+          Divider(),
           ListTile(
             title: Text(
               "Chip's",
@@ -143,6 +166,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_CHIPS);
             },
           ),
+          Divider(),
           ListTile(
             title: Text(
               "Usuarios",
@@ -153,6 +177,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_USUARIOS);
             },
           ),
+          Divider(),
           ListTile(
             title: Text(
               "Controle",
