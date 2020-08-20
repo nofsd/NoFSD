@@ -1,17 +1,37 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_infor/auth/firebase/firebase_service.dart';
-import 'package:hack_infor/widgets/app_drawer.dart';
+import 'package:hack_infor/provider/mobiles_provider.dart';
+import 'package:hack_infor/widgets/app_drawer_widget.dart';
+import 'package:hack_infor/widgets/mobile_grid_widget.dart';
+import 'package:provider/provider.dart';
 
 enum FilterOptions {
   Login,
   Logout,
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _isLoading = true;
+
   FirebaseService firebaseService = FirebaseService();
   Future<FirebaseUser> future = FirebaseAuth.instance.currentUser();
-  //FirebaseService fS = FirebaseService();
+  void initState() {
+    super.initState();
+    Provider.of<MobilesProvider>(context, listen: false)
+        .loadMobiles()
+        .then((value) {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +39,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Gestão de Equipamentos',
+          'Gestão de Mobiles',
         ),
         actions: [
           PopupMenuButton(
@@ -52,9 +72,11 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(
-        children: [],
-      ),
+      body: _isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : MobileGridWidget(),
     );
   }
 }

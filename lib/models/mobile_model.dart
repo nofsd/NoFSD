@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hack_infor/models/chip_model.dart';
 
 class MobileModel with ChangeNotifier {
   final String id;

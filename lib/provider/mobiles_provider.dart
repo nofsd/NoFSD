@@ -20,6 +20,32 @@ class MobilesProvider with ChangeNotifier {
     return _itemsMobiles.length;
   }
 
+  Future<void> loadMobiles() async {
+    final response = await http.get("$_baseUrl.json?auth=$_token");
+    Map<String, dynamic> data = json.decode(response.body);
+
+    // abaixo ele vai limpar a lista de mobiles para não duplicar a lista ao ser chamada.
+    _itemsMobiles.clear();
+    if (data != null) {
+      data.forEach((mobileId, mobileData) {
+        _itemsMobiles.add(MobileModel(
+          id: mobileId,
+          modelo: mobileData['modelo'],
+          marca: mobileData['marca'],
+          imei: mobileData['imei'],
+          usuario: mobileData['usuario'],
+          prv: mobileData['prv'],
+          operadora: mobileData['operadora'],
+          ddd: mobileData['ddd'],
+          numero: mobileData['numero'],
+        ));
+      });
+      //print(json.decode(response.body));
+      notifyListeners();
+    }
+    return Future.value();
+  }
+
   // se alguem chama o metódo para add
   Future<void> addMobile(MobileModel newMobile) async {
     //await substitui o then
