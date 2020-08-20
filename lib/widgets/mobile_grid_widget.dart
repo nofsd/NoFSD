@@ -12,7 +12,17 @@ class MobileGridWidget extends StatelessWidget {
       itemCount: mobiles.itemsCount,
       itemBuilder: (ctx, idx) => ChangeNotifierProvider.value(
         value: mobiles.itemsMobile[idx],
-        child: MobileGridItemWidget(),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Material(
+            color: Colors.white70,
+            elevation: 10,
+            borderRadius: BorderRadius.circular(51),
+            child: Container(
+              child: MobileGridItemWidget(),
+            ),
+          ),
+        ),
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

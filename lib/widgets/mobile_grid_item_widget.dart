@@ -23,7 +23,7 @@ class MobileGridItemWidget extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
-          backgroundColor: Colors.black87,
+          backgroundColor: Colors.black26,
           leading: Consumer<MobileModel>(
             // consumer substitui o provider.of
             builder: (ctx, mobile, _) => IconButton(
@@ -42,7 +42,7 @@ class MobileGridItemWidget extends StatelessWidget {
             // consumer substitui o provider.of
             builder: (ctx, mobile, _) => IconButton(
               icon: Icon(
-                Icons.phone_android,
+                Icons.account_balance_wallet,
               ),
               color: Theme.of(context).accentColor,
               onPressed: () {},

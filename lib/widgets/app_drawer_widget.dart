@@ -126,6 +126,14 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.edit),
+            title: Text('Gerenciar Mobiles'),
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(AppRotas.GERENCIAR_MOBILES);
+            },
+          ),
+          ListTile(
             title: Text(
               "Chip's",
               textAlign: TextAlign.center,
