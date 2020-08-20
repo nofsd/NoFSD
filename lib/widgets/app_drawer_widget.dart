@@ -14,7 +14,7 @@ class AppDrawer extends StatelessWidget {
     Future<FirebaseUser> future = FirebaseAuth.instance.currentUser();
 
     return Drawer(
-      child: Column(
+      child: ListView(
         children: [
           AppBar(
             title: Text(
@@ -36,16 +36,9 @@ class AppDrawer extends StatelessWidget {
             //}),
             //leading: Icon(Icons.computer),
           ),
-          RaisedButton(
-            onPressed: () {
-              firebaseService.logout();
-              Navigator.of(context).pushNamed(AppRotas.AUTH_HOME);
-            },
-            child: Icon(Icons.home),
-          ),
           Divider(),
           Container(
-            margin: EdgeInsets.only(bottom: 30),
+            margin: EdgeInsets.only(bottom: 30, top: 30),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.black45,
@@ -73,20 +66,25 @@ class AppDrawer extends StatelessWidget {
             height: 75,
             width: 75,
             child: ClipOval(
-              child: FutureBuilder(
-                future: future,
-                builder: (context, sanapshot) {
-                  FirebaseUser user = sanapshot.data;
-                  return user != null
-                      ? Image.network(
-                          user.photoUrl,
-                          fit: BoxFit.cover,
-                        )
-                      : Icon(
-                          Icons.account_circle,
-                          size: 50,
-                        );
-                },
+              child: Container(
+                height: 50,
+                width: 50,
+                child: FutureBuilder(
+                  future: future,
+                  builder: (context, sanapshot) {
+                    FirebaseUser user = sanapshot.data;
+                    return user != null
+                        ? Image.network(
+                            user.photoUrl,
+                            fit: BoxFit.cover,
+                          )
+                        : Icon(
+                            Icons.account_circle,
+                            size: 50,
+                            color: Colors.grey[700],
+                          );
+                  },
+                ),
               ),
             ),
           ),
@@ -101,6 +99,7 @@ class AppDrawer extends StatelessWidget {
                   ? Text(
                       user.displayName,
                       style: TextStyle(color: Colors.grey[700], fontSize: 17),
+                      textAlign: TextAlign.center,
                     )
                   : Container();
             },
@@ -113,6 +112,7 @@ class AppDrawer extends StatelessWidget {
                   ? Text(
                       user.email,
                       style: TextStyle(color: Colors.grey, fontSize: 12),
+                      textAlign: TextAlign.center,
                     )
                   : Container();
             },
@@ -138,10 +138,21 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             title: Text(
-              "Adicionar Mobile",
-              textAlign: TextAlign.center,
+              "Home",
+              //textAlign: TextAlign.center,
             ),
-            trailing: Icon(Icons.computer),
+            leading: Icon(Icons.home),
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRotas.HOME);
+            },
+          ),
+          Divider(),
+          ListTile(
+            title: Text(
+              "Adicionar Mobile",
+              //textAlign: TextAlign.center,
+            ),
+            leading: Icon(Icons.add_to_photos),
             onTap: () {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_FORM);
             },
@@ -149,7 +160,10 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.edit),
-            title: Text('Gerenciar Mobiles'),
+            title: Text(
+              'Gerenciar Mobiles',
+              //textAlign: TextAlign.center,
+            ),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(AppRotas.GERENCIAR_MOBILES);
@@ -159,9 +173,9 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             title: Text(
               "Chip's",
-              textAlign: TextAlign.center,
+              //textAlign: TextAlign.center,
             ),
-            trailing: Icon(Icons.computer),
+            leading: Icon(Icons.computer),
             onTap: () {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_CHIPS);
             },
@@ -170,9 +184,9 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             title: Text(
               "Usuarios",
-              textAlign: TextAlign.center,
+              //textAlign: TextAlign.center,
             ),
-            trailing: Icon(Icons.computer),
+            leading: Icon(Icons.supervised_user_circle),
             onTap: () {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_USUARIOS);
             },
@@ -181,9 +195,9 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             title: Text(
               "Controle",
-              textAlign: TextAlign.center,
+              //textAlign: TextAlign.center,
             ),
-            trailing: Icon(Icons.computer),
+            leading: Icon(Icons.settings),
             onTap: () {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_CONTROLE);
             },
