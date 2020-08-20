@@ -117,7 +117,7 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             title: Text(
-              "Aparelhos Mobile",
+              "Adicionar Mobile",
               textAlign: TextAlign.center,
             ),
             trailing: Icon(Icons.computer),
