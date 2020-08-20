@@ -73,6 +73,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
       operadora: _formData['operadora'],
       ddd: _formData['ddd'],
       numero: _formData['numero'],
+      status: _formData['status'],
     );
 
     setState(() {
@@ -189,22 +190,86 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
                 //onSaved vai executar o _saveForm
                 onSaved: (value) => _formData['operadora'] = value,
               ),
-              TextFormField(
-                initialValue: _formData['ddd'],
-                decoration: InputDecoration(labelText: 'DDD'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_numeroFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['ddd'] = value,
+              Row(
+                children: [
+                  Container(
+                    width: 70,
+                    child: TextFormField(
+                      initialValue: _formData['ddd'],
+                      decoration: InputDecoration(
+                        labelText: 'DDD',
+                      ),
+                      textInputAction:
+                          TextInputAction.next, // muda para o próximo
+                      keyboardType: TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_numeroFocusNode);
+                      },
+                      //onSaved vai executar o _saveForm
+                      onSaved: (value) => _formData['ddd'] = value,
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    child: TextFormField(
+                      initialValue: _formData['numero'],
+                      decoration: InputDecoration(labelText: 'Numero'),
+                      textInputAction:
+                          TextInputAction.next, // muda para o próximo
+                      keyboardType: TextInputType.numberWithOptions(
+                        decimal: false,
+                      ),
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_marcaFocusNode);
+                      },
+                      //onSaved vai executar o _saveForm
+                      onSaved: (value) => _formData['numero'] = value,
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    child: TextFormField(
+                      initialValue: _formData['pin'],
+                      decoration: InputDecoration(labelText: 'Pin'),
+                      textInputAction:
+                          TextInputAction.next, // muda para o próximo
+                      keyboardType: TextInputType.numberWithOptions(
+                        decimal: false,
+                      ),
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_marcaFocusNode);
+                      },
+                      //onSaved vai executar o _saveForm
+                      onSaved: (value) => _formData['pin'] = value,
+                    ),
+                  ),
+                ],
               ),
               TextFormField(
-                initialValue: _formData['numero'],
-                decoration: InputDecoration(labelText: 'Numero'),
+                initialValue: _formData['dataLocacao'],
+                decoration: InputDecoration(labelText: 'Data da Locação'),
+                textInputAction: TextInputAction.next, // muda para o próximo
+                onFieldSubmitted: (_) {
+                  FocusScope.of(context).requestFocus(_marcaFocusNode);
+                },
+                //onSaved vai executar o _saveForm
+                onSaved: (value) => _formData['dataLocacao'] = value,
+              ),
+              TextFormField(
+                initialValue: _formData['dataDevolucao'],
+                decoration: InputDecoration(labelText: 'Data da Devolução'),
+                textInputAction: TextInputAction.next, // muda para o próximo
+                onFieldSubmitted: (_) {
+                  FocusScope.of(context).requestFocus(_marcaFocusNode);
+                },
+                //onSaved vai executar o _saveForm
+                onSaved: (value) => _formData['dataDevolucao'] = value,
+              ),
+              TextFormField(
+                initialValue: _formData['status'],
+                decoration: InputDecoration(labelText: 'Status'),
                 textInputAction: TextInputAction.next, // muda para o próximo
                 keyboardType: TextInputType.numberWithOptions(
                   decimal: false,
@@ -213,7 +278,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
                   FocusScope.of(context).requestFocus(_marcaFocusNode);
                 },
                 //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['numero'] = value,
+                onSaved: (value) => _formData['status'] = value,
               ),
               GestureDetector(
                 child: Container(

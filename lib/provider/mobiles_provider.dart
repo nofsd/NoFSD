@@ -1,14 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:hack_infor/exceptions/http_exception.dart';
 import 'package:hack_infor/models/mobile_model.dart';
 import 'package:hack_infor/provider/networking.dart';
 import 'package:hack_infor/utils/constantes.dart';
-import 'package:http/http.dart' as http;
 
 class MobilesProvider with ChangeNotifier {
-  final String _baseUrl = '${Constantes.BASE_API_URL}/mobiles';
+  //final String _baseUrl = '${Constantes.BASE_API_URL}/mobiles';
   final String _baseBack = '${Constantes.BASE_API_BACK}/mobiles';
   List<MobileModel> _itemsMobiles = [];
 

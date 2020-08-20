@@ -21,6 +21,7 @@ class MobileModel with ChangeNotifier {
   final String dataLocacao;
   final String dataDevolucao;
   final String status;
+  final String locado;
 
   MobileModel(
       {this.id,
@@ -38,7 +39,8 @@ class MobileModel with ChangeNotifier {
       this.pais,
       this.dataLocacao,
       this.dataDevolucao,
-      this.status});
+      this.status,
+      this.locado});
 
   factory MobileModel.fromJson(Map<String, dynamic> json) =>
       _$MobileModelFromJson(json);
