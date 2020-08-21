@@ -19,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _isLoading = true;
+  final _form = GlobalKey<FormState>();
 
   FirebaseService firebaseService = FirebaseService();
   Future<FirebaseUser> future = FirebaseAuth.instance.currentUser();
@@ -61,7 +62,69 @@ class _HomeScreenState extends State<HomeScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : MobileGridWidget(),
+          : Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/fundo_tec_azul.jpg"),
+                    fit: BoxFit.cover),
+              ),
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white60,
+                          Colors.white70,
+                        ],
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(50),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  height: 50,
+                                  child: Form(
+                                    key: _form,
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        labelText: 'Busca Dispositivo',
+                                        helperStyle: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25),
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(7.0),
+                                          ),
+                                          //borderSide: BorderSide(
+                                          //    width: 3,
+                                          //    color: Colors.amberAccent),
+                                        ),
+                                      ),
+                                      textInputAction: TextInputAction
+                                          .next, // muda para o próximo
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Icon(Icons.search)
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: MobileGridWidget(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }

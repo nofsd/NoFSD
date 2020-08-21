@@ -157,7 +157,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                   leading: Icon(Icons.computer),
                   onTap: () {
-                    Navigator.of(context).pushNamed(AppRotas.MOBILE_CHIPS);
+                    //Navigator.of(context).pushNamed(AppRotas.MOBILE_CHIPS);
                   },
                 ),
                 Divider(),
@@ -168,7 +168,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                   leading: Icon(Icons.supervised_user_circle),
                   onTap: () {
-                    Navigator.of(context).pushNamed(AppRotas.MOBILE_USUARIOS);
+                    //Navigator.of(context).pushNamed(AppRotas.MOBILE_USUARIOS);
                   },
                 ),
                 Divider(),
@@ -179,7 +179,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                   leading: Icon(Icons.settings),
                   onTap: () {
-                    Navigator.of(context).pushNamed(AppRotas.MOBILE_CONTROLE);
+                    //Navigator.of(context).pushNamed(AppRotas.MOBILE_CONTROLE);
                   },
                 ),
               ],
