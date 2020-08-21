@@ -14,7 +14,7 @@ class AppDrawer extends StatelessWidget {
     Future<FirebaseUser> future = FirebaseAuth.instance.currentUser();
 
     return Drawer(
-      child: ListView(
+      child: Column(
         children: [
           AppBar(
             title: Text(
@@ -135,72 +135,67 @@ class AppDrawer extends StatelessWidget {
                     );
             },
           ),
-          Divider(),
-          ListTile(
-            title: Text(
-              "Home",
-              //textAlign: TextAlign.center,
+          Expanded(
+            child: ListView(
+              children: [
+                Divider(),
+                ListTile(
+                  title: Text(
+                    "Ativo Fixo",
+                    //textAlign: TextAlign.center,
+                  ),
+                  leading: Icon(Icons.home),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRotas.HOME);
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  leading: Icon(Icons.edit),
+                  title: Text(
+                    'Gerenciar Ativos',
+                    //textAlign: TextAlign.center,
+                  ),
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushReplacementNamed(AppRotas.GERENCIAR_MOBILES);
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  title: Text(
+                    "Solicitar",
+                    //textAlign: TextAlign.center,
+                  ),
+                  leading: Icon(Icons.computer),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRotas.MOBILE_CHIPS);
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  title: Text(
+                    "Devolver",
+                    //textAlign: TextAlign.center,
+                  ),
+                  leading: Icon(Icons.supervised_user_circle),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRotas.MOBILE_USUARIOS);
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  title: Text(
+                    "Assistência",
+                    //textAlign: TextAlign.center,
+                  ),
+                  leading: Icon(Icons.settings),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRotas.MOBILE_CONTROLE);
+                  },
+                ),
+              ],
             ),
-            leading: Icon(Icons.home),
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRotas.HOME);
-            },
-          ),
-          Divider(),
-          ListTile(
-            title: Text(
-              "Adicionar Mobile",
-              //textAlign: TextAlign.center,
-            ),
-            leading: Icon(Icons.add_to_photos),
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRotas.MOBILE_FORM);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.edit),
-            title: Text(
-              'Gerenciar Mobiles',
-              //textAlign: TextAlign.center,
-            ),
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(AppRotas.GERENCIAR_MOBILES);
-            },
-          ),
-          Divider(),
-          ListTile(
-            title: Text(
-              "Chip's",
-              //textAlign: TextAlign.center,
-            ),
-            leading: Icon(Icons.computer),
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRotas.MOBILE_CHIPS);
-            },
-          ),
-          Divider(),
-          ListTile(
-            title: Text(
-              "Usuarios",
-              //textAlign: TextAlign.center,
-            ),
-            leading: Icon(Icons.supervised_user_circle),
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRotas.MOBILE_USUARIOS);
-            },
-          ),
-          Divider(),
-          ListTile(
-            title: Text(
-              "Controle",
-              //textAlign: TextAlign.center,
-            ),
-            leading: Icon(Icons.settings),
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRotas.MOBILE_CONTROLE);
-            },
           ),
         ],
       ),

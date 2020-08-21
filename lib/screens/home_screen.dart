@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_infor/auth/firebase/firebase_service.dart';
 import 'package:hack_infor/provider/mobiles_provider.dart';
+import 'package:hack_infor/utils/app_rotas.dart';
 import 'package:hack_infor/widgets/app_drawer_widget.dart';
 import 'package:hack_infor/widgets/mobile_grid_widget.dart';
 import 'package:provider/provider.dart';
@@ -39,36 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Gestão de Mobiles',
+          'Ativo Fixo',
         ),
         actions: [
-          PopupMenuButton(
-            icon: Icon(Icons.account_circle),
-            onSelected: (FilterOptions selectetdValue) {},
-            itemBuilder: (_) => [
-              PopupMenuItem(
-                child: RaisedButton(
-                  onPressed: () {
-                    firebaseService.handleSignIn();
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text('Entrar  '), Icon(Icons.input)],
-                  ),
-                ),
-                value: FilterOptions.Login,
-              ),
-              PopupMenuItem(
-                child: RaisedButton(
-                  onPressed: () => firebaseService.logout(),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text('Sair'), Icon(Icons.call_missed_outgoing)],
-                  ),
-                ),
-                value: FilterOptions.Logout,
-              ),
-            ],
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRotas.MOBILE_FORM);
+            },
           ),
         ],
       ),

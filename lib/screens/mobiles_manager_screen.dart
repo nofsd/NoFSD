@@ -16,14 +16,14 @@ class MobilesManagerScreen extends StatelessWidget {
     final mobiles = mobilesData.itemsMobile;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gerenciar Mobiles'),
+        title: Text('Gerenciar Ativos'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
               Navigator.of(context).pushNamed(AppRotas.MOBILE_FORM);
             },
-          )
+          ),
         ],
       ),
       drawer: AppDrawer(),
