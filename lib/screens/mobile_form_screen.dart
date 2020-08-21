@@ -354,7 +354,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
               Container(
                 padding: EdgeInsets.all(1),
                 child: TextFormField(
-                  initialValue: _formData['status'],
+                  initialValue: _formData['status'].toString(),
                   decoration: InputDecoration(
                     labelText: 'Status',
                     border: OutlineInputBorder(),
