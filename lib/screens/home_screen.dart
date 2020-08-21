@@ -19,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _isLoading = true;
+  final _form = GlobalKey<FormState>();
 
   FirebaseService firebaseService = FirebaseService();
   Future<FirebaseUser> future = FirebaseAuth.instance.currentUser();
@@ -61,7 +62,38 @@ class _HomeScreenState extends State<HomeScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : MobileGridWidget(),
+          : Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(50),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          height: 50,
+                          child: Form(
+                            key: _form,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Busca Dispositivo',
+                                border: OutlineInputBorder(),
+                              ),
+                              textInputAction:
+                                  TextInputAction.next, // muda para o próximo
+                            ),
+                          ),
+                        ),
+                      ),
+                      Icon(Icons.search)
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: MobileGridWidget(),
+                ),
+              ],
+            ),
     );
   }
 }
