@@ -1,132 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:hack_infor/models/mobile_model.dart';
-import 'package:hack_infor/widgets/mobile_detalhe_top_widget.dart';
+import 'package:hack_infor/screens/mobile_dadosbem_screen.dart';
+import 'package:hack_infor/screens/mobile_historico_screen.dart';
+import 'package:hack_infor/screens/mobile_vinculo_screen.dart';
 
-class MobileDetalhesScreen extends StatelessWidget {
-  Widget _createSectionContainerFunci(Widget child) {
-    return Container(
-        width: 350,
-        height: 130,
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.symmetric(vertical: 5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: child);
-  }
+class MobileDetalhesScreen extends StatefulWidget {
+  @override
+  _MobileDetalhesScreenState createState() => _MobileDetalhesScreenState();
+}
 
-  Widget _createSectionContainerMobile(Widget child) {
-    return Container(
-        width: 350,
-        height: 190,
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.symmetric(vertical: 5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: child);
+class _MobileDetalhesScreenState extends State<MobileDetalhesScreen> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  static List<Widget> _widgetOptions = <Widget>[
+    MobileDetalhesDadosBem(),
+    MobileDetalhesVinculoScreen(),
+    MobileDetalhesHistoricoScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final MobileModel mobile =
         ModalRoute.of(context).settings.arguments as MobileModel;
-    List dadosFunci = ['PRV: ${mobile.prv}', '', ''];
-    List dadosMobile = [
-      'DDD: ${mobile.ddd}',
-      'Numero: ${mobile.numero}',
-      'Imei: ${mobile.imei}',
-      'Marca: ${mobile.marca}',
-      'Modelo: ${mobile.modelo}',
-      'Operadora: ${mobile.operadora}',
-      'Marca: ${mobile.marca}',
-    ];
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(mobile.prv),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            MobileDetalheTopWidget(),
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Text(
-                'Dados Funcionário',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-            ),
-            _createSectionContainerFunci(
-              ListView.builder(
-                itemCount: dadosFunci.length,
-                itemBuilder: (ctx, index) {
-                  return Card(
-                    color: Colors.black54,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 10,
-                      ),
-                      child: Text(
-                        dadosFunci[index],
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Text(
-                'Dados Mobile',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-            ),
-            _createSectionContainerMobile(
-              ListView.builder(
-                itemCount: dadosMobile.length,
-                itemBuilder: (ctx, index) {
-                  return Card(
-                    color: Colors.black54,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 10,
-                      ),
-                      child: Text(
-                        dadosMobile[index],
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (_) {},
+        onTap: _onItemTapped,
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.white,
         selectedItemColor: Theme.of(context).accentColor,
-        currentIndex: 0,
+        currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.edit),
-            title: Text('Editar'),
+            title: Text('Dados'),
             backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.delete),
-            title: Text('Excluir'),
+            title: Text('Vínculo'),
+            backgroundColor: Theme.of(context).primaryColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.delete),
+            title: Text('Histórico'),
             backgroundColor: Theme.of(context).primaryColor,
           ),
         ],
