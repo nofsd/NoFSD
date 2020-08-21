@@ -19,6 +19,11 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
   final _operadoraFocusNode = FocusNode();
   final _dddFocusNode = FocusNode();
   final _numeroFocusNode = FocusNode();
+  final _pinFocusNode = FocusNode();
+  final _dataLocacaoFocusNode = FocusNode();
+  final _dataDevolucaoFocusNode = FocusNode();
+  final _statusFocusNode = FocusNode();
+  final _tipoFocusNode = FocusNode();
   bool _isLoading = false;
 
   @override
@@ -37,6 +42,11 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
         _formData['operadora'] = mobile.operadora;
         _formData['ddd'] = mobile.ddd;
         _formData['numero'] = mobile.numero;
+        _formData['pin'] = mobile.pin;
+        _formData['dataLocacao'] = mobile.dataLocacao;
+        _formData['dataDevolucao'] = mobile.dataLocacao;
+        _formData['status'] = mobile.status;
+        _formData['tradeIn'] = mobile.tradeIn;
       } else {
         _formData['marca'] = '';
       }
@@ -73,7 +83,11 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
       operadora: _formData['operadora'],
       ddd: _formData['ddd'],
       numero: _formData['numero'],
+      pin: _formData['pin'],
+      dataLocacao: _formData['dataLocacao'],
+      dataDevolucao: _formData['dataDevolucao'],
       status: _formData['status'],
+      tradeIn: _formData['tradeIn'],
     );
 
     setState(() {
@@ -127,77 +141,125 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
           key: _form,
           child: ListView(
             children: [
-              TextFormField(
-                initialValue: _formData['modelo'],
-                decoration: InputDecoration(labelText: 'Modelo'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_marcaFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['modelo'] = value,
-              ),
-              TextFormField(
-                initialValue: _formData['marca'],
-                decoration: InputDecoration(labelText: 'Marca'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_imeiFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['marca'] = value,
-              ),
-              TextFormField(
-                initialValue: _formData['imei'],
-                decoration: InputDecoration(labelText: 'IMEI'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_usuarioFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['imei'] = value,
-              ),
-              TextFormField(
-                initialValue: _formData['usuario'],
-                decoration: InputDecoration(labelText: 'Usuário'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_prvFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['usuario'] = value,
-              ),
-              TextFormField(
-                initialValue: _formData['prv'],
-                decoration: InputDecoration(labelText: 'PRV'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_operadoraFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['prv'] = value,
-              ),
-              TextFormField(
-                initialValue: _formData['operadora'],
-                decoration: InputDecoration(labelText: 'Operadora'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_dddFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['operadora'] = value,
-              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    padding: EdgeInsets.all(1),
+                    width: 180,
+                    child: TextFormField(
+                      initialValue: _formData['modelo'],
+                      decoration: InputDecoration(
+                        labelText: 'Modelo',
+                        border: OutlineInputBorder(),
+                      ),
+                      textInputAction:
+                          TextInputAction.next, // muda para o próximo
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_marcaFocusNode);
+                      },
+                      //onSaved vai executar o _saveForm
+                      onSaved: (value) => _formData['modelo'] = value,
+                    ),
+                  ),
+                  Container(
+                    width: 180,
+                    padding: EdgeInsets.all(1),
+                    child: TextFormField(
+                      initialValue: _formData['marca'],
+                      decoration: InputDecoration(
+                        labelText: 'Marca',
+                        border: OutlineInputBorder(),
+                      ),
+                      textInputAction:
+                          TextInputAction.next, // muda para o próximo
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_imeiFocusNode);
+                      },
+                      //onSaved vai executar o _saveForm
+                      onSaved: (value) => _formData['marca'] = value,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['imei'],
+                  decoration: InputDecoration(
+                    labelText: 'IMEI',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  keyboardType: TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_usuarioFocusNode);
+                  },
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['imei'] = value,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['usuario'],
+                  decoration: InputDecoration(
+                    labelText: 'Usuário',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_prvFocusNode);
+                  },
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['usuario'] = value,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['prv'],
+                  decoration: InputDecoration(
+                    labelText: 'PRV',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_operadoraFocusNode);
+                  },
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['prv'] = value,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['operadora'],
+                  decoration: InputDecoration(
+                    labelText: 'Operadora',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_dddFocusNode);
+                  },
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['operadora'] = value,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(1),
                     width: 70,
                     child: TextFormField(
                       initialValue: _formData['ddd'],
                       decoration: InputDecoration(
                         labelText: 'DDD',
+                        border: OutlineInputBorder(),
                       ),
                       textInputAction:
                           TextInputAction.next, // muda para o próximo
@@ -212,34 +274,43 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
                     ),
                   ),
                   Container(
-                    width: 150,
+                    padding: EdgeInsets.all(1),
+                    width: 140,
                     child: TextFormField(
                       initialValue: _formData['numero'],
-                      decoration: InputDecoration(labelText: 'Numero'),
+                      decoration: InputDecoration(
+                        labelText: 'Numero',
+                        border: OutlineInputBorder(),
+                      ),
                       textInputAction:
                           TextInputAction.next, // muda para o próximo
                       keyboardType: TextInputType.numberWithOptions(
                         decimal: false,
                       ),
                       onFieldSubmitted: (_) {
-                        FocusScope.of(context).requestFocus(_marcaFocusNode);
+                        FocusScope.of(context).requestFocus(_pinFocusNode);
                       },
                       //onSaved vai executar o _saveForm
                       onSaved: (value) => _formData['numero'] = value,
                     ),
                   ),
                   Container(
-                    width: 150,
+                    padding: EdgeInsets.all(1),
+                    width: 100,
                     child: TextFormField(
                       initialValue: _formData['pin'],
-                      decoration: InputDecoration(labelText: 'Pin'),
+                      decoration: InputDecoration(
+                        labelText: 'Pin',
+                        border: OutlineInputBorder(),
+                      ),
                       textInputAction:
                           TextInputAction.next, // muda para o próximo
                       keyboardType: TextInputType.numberWithOptions(
                         decimal: false,
                       ),
                       onFieldSubmitted: (_) {
-                        FocusScope.of(context).requestFocus(_marcaFocusNode);
+                        FocusScope.of(context)
+                            .requestFocus(_dataLocacaoFocusNode);
                       },
                       //onSaved vai executar o _saveForm
                       onSaved: (value) => _formData['pin'] = value,
@@ -247,46 +318,81 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
                   ),
                 ],
               ),
-              TextFormField(
-                initialValue: _formData['dataLocacao'],
-                decoration: InputDecoration(labelText: 'Data da Locação'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_marcaFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['dataLocacao'] = value,
-              ),
-              TextFormField(
-                initialValue: _formData['dataDevolucao'],
-                decoration: InputDecoration(labelText: 'Data da Devolução'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_marcaFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['dataDevolucao'] = value,
-              ),
-              TextFormField(
-                initialValue: _formData['status'],
-                decoration: InputDecoration(labelText: 'Status'),
-                textInputAction: TextInputAction.next, // muda para o próximo
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: false,
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['dataLocacao'],
+                  decoration: InputDecoration(
+                    labelText: 'Data da Locação',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context)
+                        .requestFocus(_dataDevolucaoFocusNode);
+                  },
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['dataLocacao'] = value,
                 ),
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_marcaFocusNode);
-                },
-                //onSaved vai executar o _saveForm
-                onSaved: (value) => _formData['status'] = value,
+              ),
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['dataDevolucao'],
+                  decoration: InputDecoration(
+                    labelText: 'Data da Devolução',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_statusFocusNode);
+                  },
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['dataDevolucao'] = value,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['status'],
+                  decoration: InputDecoration(
+                    labelText: 'Status',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  keyboardType: TextInputType.numberWithOptions(
+                    decimal: false,
+                  ),
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_tipoFocusNode);
+                  },
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['status'] = value,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(1),
+                child: TextFormField(
+                  initialValue: _formData['tradeIn'],
+                  decoration: InputDecoration(
+                    labelText: 'Tipo',
+                    border: OutlineInputBorder(),
+                  ),
+                  textInputAction: TextInputAction.next, // muda para o próximo
+                  keyboardType: TextInputType.numberWithOptions(
+                    decimal: false,
+                  ),
+                  //onSaved vai executar o _saveForm
+                  onSaved: (value) => _formData['tradeIn'] = value,
+                ),
               ),
               GestureDetector(
                 child: Container(
-                  width: 140,
-                  height: 140,
+                  width: 30,
+                  height: 30,
                   child: Icon(
                     Icons.camera_alt,
-                    size: 75,
+                    size: 25,
                   ),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,

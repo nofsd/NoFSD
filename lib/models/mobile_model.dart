@@ -21,24 +21,27 @@ class MobileModel with ChangeNotifier {
   final String dataLocacao;
   final String dataDevolucao;
   final String status;
+  final String tipo;
 
-  MobileModel(
-      {this.id,
-      this.modelo,
-      this.marca,
-      this.imei,
-      this.vouncher,
-      this.tradeIn,
-      this.usuario,
-      this.prv,
-      this.operadora,
-      this.pin,
-      this.numero,
-      this.ddd,
-      this.pais,
-      this.dataLocacao,
-      this.dataDevolucao,
-      this.status});
+  MobileModel({
+    this.id,
+    this.modelo,
+    this.marca,
+    this.imei,
+    this.vouncher,
+    this.tradeIn,
+    this.usuario,
+    this.prv,
+    this.operadora,
+    this.pin,
+    this.numero,
+    this.ddd,
+    this.pais,
+    this.dataLocacao,
+    this.dataDevolucao,
+    this.status,
+    this.tipo,
+  });
 
   factory MobileModel.fromJson(Map<String, dynamic> json) =>
       _$MobileModelFromJson(json);
