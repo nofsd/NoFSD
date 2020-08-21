@@ -87,7 +87,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
       dataLocacao: _formData['dataLocacao'],
       dataDevolucao: _formData['dataDevolucao'],
       //status: _formData['status'],
-      tipo: _formData['tipo'],
+      tipo: int.parse(_formData['tipo']),
       status: int.parse(_formData['status']),
       tradeIn: _formData['tradeIn'],
     );
@@ -375,7 +375,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
               Container(
                 padding: EdgeInsets.all(1),
                 child: TextFormField(
-                  initialValue: _formData['tipo'],
+                  initialValue: _formData['tipo'].toString(),
                   decoration: InputDecoration(
                     labelText: 'Tipo',
                     border: OutlineInputBorder(),
