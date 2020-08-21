@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'mobile_model.g.dart';
+
+@JsonSerializable()
 class MobileModel with ChangeNotifier {
   final String id;
   final String modelo;
@@ -17,25 +21,26 @@ class MobileModel with ChangeNotifier {
   final String dataLocacao;
   final String dataDevolucao;
   final String status;
-  final String locado;
 
-  MobileModel({
-    this.id,
-    this.modelo, //
-    this.marca, //
-    this.imei, //
-    this.vouncher,
-    this.tradeIn,
-    this.usuario, //
-    this.prv, //
-    this.operadora, //
-    this.pin,
-    this.numero, //
-    this.ddd, //
-    this.pais,
-    this.dataLocacao,
-    this.dataDevolucao,
-    this.status,
-    this.locado,
-  });
+  MobileModel(
+      {this.id,
+      this.modelo,
+      this.marca,
+      this.imei,
+      this.vouncher,
+      this.tradeIn,
+      this.usuario,
+      this.prv,
+      this.operadora,
+      this.pin,
+      this.numero,
+      this.ddd,
+      this.pais,
+      this.dataLocacao,
+      this.dataDevolucao,
+      this.status});
+
+  factory MobileModel.fromJson(Map<String, dynamic> json) =>
+      _$MobileModelFromJson(json);
+  Map<String, dynamic> toJson() => _$MobileModelToJson(this);
 }
