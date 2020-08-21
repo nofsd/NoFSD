@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hack_infor/models/mobile_model.dart';
+import 'package:hack_infor/models/usuario_previ_model.dart';
+import 'package:hack_infor/provider/usuario_previ_provider.dart';
 import 'package:hack_infor/widgets/mobile_detalhe_top_widget.dart';
 
-class MobileDetalhesVinculoScreen extends StatelessWidget {
+class MobileDetalhesVinculoScreen extends StatefulWidget {
+  @override
+  _MobileDetalhesVinculoScreenState createState() =>
+      _MobileDetalhesVinculoScreenState();
+}
+
+class _MobileDetalhesVinculoScreenState
+    extends State<MobileDetalhesVinculoScreen> {
   Widget _createSectionContainerFunci(Widget child) {
     return Container(
         width: 350,
@@ -33,23 +42,23 @@ class MobileDetalhesVinculoScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.headline6,
             ),
           ),
-          _createSectionContainerFunci(
-            ListView.builder(
-              itemCount: dadosFunci.length,
-              itemBuilder: (ctx, index) {
-                return Card(
-                  color: Colors.black54,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
-                    ),
-                    child: Text(
-                      dadosFunci[index],
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                );
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            child: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'PRV',
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            child: IconButton(
+              icon: Icon(Icons.search),
+              tooltip: 'Consulta usuario',
+              onPressed: () async {
+                setState(() {});
               },
             ),
           ),

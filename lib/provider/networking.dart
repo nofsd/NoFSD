@@ -16,6 +16,12 @@ class NetworkHelper {
     return _trataResposta(response);
   }
 
+  Future getDataBy(query) async {
+    var uri = Uri.https(url, query);
+    http.Response response = await http.get(uri);
+    return _trataResposta(response);
+  }
+
   Future<String> postData(data) async {
     http.Response response =
         await http.post(url, headers: headers, body: jsonEncode(data));
