@@ -86,9 +86,9 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
       pin: _formData['pin'],
       dataLocacao: _formData['dataLocacao'],
       dataDevolucao: _formData['dataDevolucao'],
-      status: _formData['status'],
+      //status: _formData['status'],
       tipo: _formData['tipo'],
-      //status: int.parse(_formData['status']),
+      status: int.parse(_formData['status']),
       tradeIn: _formData['tradeIn'],
     );
 
