@@ -27,22 +27,22 @@ class MobileGridItemWidget2 extends StatelessWidget {
   Widget build(BuildContext context) {
     final MobileModel mobile = Provider.of<MobileModel>(context, listen: false);
 
-    final String status = mobile.status;
+    final int status = mobile.status;
 
     if (status == null) {
       corIcone = Colors.white;
     }
-    if (status == '1') {
+    if (status == 1) {
       corIcone = Colors.tealAccent;
       cor1 = Colors.teal[900].withOpacity(0.5);
       cor2 = Colors.tealAccent.withOpacity(0.5);
     }
-    if (status == '2') {
+    if (status == 2) {
       corIcone = Colors.redAccent;
       cor1 = Colors.red[900].withOpacity(0.5);
       cor2 = Colors.redAccent.withOpacity(0.5);
     }
-    if (status == '3') {
+    if (status == 3) {
       corIcone = Colors.orangeAccent;
       cor1 = Colors.orange[900].withOpacity(0.5);
       cor2 = Colors.orangeAccent.withOpacity(0.5);

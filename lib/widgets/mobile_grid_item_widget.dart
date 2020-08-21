@@ -9,17 +9,17 @@ class MobileGridItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final MobileModel mobile = Provider.of<MobileModel>(context, listen: false);
 
-    final String status = mobile.status;
+    final int status = mobile.status;
     if (status == null) {
       corIcone = Colors.white;
     }
-    if (status == '1') {
+    if (status == 1) {
       corIcone = Colors.tealAccent;
     }
-    if (status == '2') {
+    if (status == 2) {
       corIcone = Colors.redAccent;
     }
-    if (status == '3') {
+    if (status == 3) {
       corIcone = Colors.amberAccent;
     }
 

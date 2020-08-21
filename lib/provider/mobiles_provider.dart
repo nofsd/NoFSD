@@ -7,7 +7,7 @@ import 'package:hack_infor/utils/constantes.dart';
 
 class MobilesProvider with ChangeNotifier {
   //final String _baseUrl = '${Constantes.BASE_API_URL}/mobiles';
-  final String _baseBack = '${Constantes.BASE_API_BACK}/mobiles';
+  final String _baseBack = '${Constantes.BASE_API_BACK}/ativos-fixos';
   List<MobileModel> _itemsMobiles = [];
 
   String _token;

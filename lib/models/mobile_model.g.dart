@@ -23,7 +23,8 @@ MobileModel _$MobileModelFromJson(Map<String, dynamic> json) {
     pais: json['pais'] as String,
     dataLocacao: json['dataLocacao'] as String,
     dataDevolucao: json['dataDevolucao'] as String,
-    status: json['status'] as String,
+    status: json['status'] as int,
+    tipo: json['tipo'] as int,
   );
 }
 
@@ -45,4 +46,5 @@ Map<String, dynamic> _$MobileModelToJson(MobileModel instance) =>
       'dataLocacao': instance.dataLocacao,
       'dataDevolucao': instance.dataDevolucao,
       'status': instance.status,
+      'tipo': instance.tipo,
     };

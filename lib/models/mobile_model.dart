@@ -20,8 +20,8 @@ class MobileModel with ChangeNotifier {
   final String pais;
   final String dataLocacao;
   final String dataDevolucao;
-  final String status;
-  final String tipo;
+  final int status;
+  final int tipo;
 
   MobileModel({
     this.id,
