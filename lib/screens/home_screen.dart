@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.white60,
+                          Colors.white70,
                           Colors.white70,
                         ],
                       ),
