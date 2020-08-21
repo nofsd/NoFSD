@@ -48,7 +48,7 @@ class MobileGridItemWidget2 extends StatelessWidget {
       cor2 = Colors.orangeAccent.withOpacity(0.5);
     }
 
-    final String tipo = mobile.tradeIn;
+    final int tipo = mobile.tipo;
 
     if (tipo == null) {
       icon = Icon(
@@ -57,28 +57,28 @@ class MobileGridItemWidget2 extends StatelessWidget {
         color: corIcone,
       );
     }
-    if (tipo == '1') {
+    if (tipo == 1) {
       icon = Icon(
         Icons.camera_roll,
         size: 20,
         color: corIcone,
       );
     }
-    if (tipo == '2') {
+    if (tipo == 2) {
       icon = Icon(
         Icons.smartphone,
         size: 20,
         color: corIcone,
       );
     }
-    if (tipo == '3') {
+    if (tipo == 3) {
       icon = Icon(
         Icons.stay_current_landscape,
         size: 20,
         color: corIcone,
       );
     }
-    if (tipo == '4') {
+    if (tipo == 4) {
       icon = Icon(
         Icons.computer,
         size: 20,

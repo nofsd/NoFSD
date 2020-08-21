@@ -44,9 +44,9 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
         _formData['numero'] = mobile.numero;
         _formData['pin'] = mobile.pin;
         _formData['dataLocacao'] = mobile.dataLocacao;
-        _formData['dataDevolucao'] = mobile.dataLocacao;
+        _formData['dataDevolucao'] = mobile.dataDevolucao;
         _formData['status'] = mobile.status;
-        _formData['tradeIn'] = mobile.tradeIn;
+        _formData['tipo'] = mobile.tipo;
       } else {
         _formData['marca'] = '';
       }
@@ -87,7 +87,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
       dataLocacao: _formData['dataLocacao'],
       dataDevolucao: _formData['dataDevolucao'],
       status: _formData['status'],
-      tradeIn: _formData['tradeIn'],
+      tipo: _formData['tipo'],
     );
 
     setState(() {
@@ -373,7 +373,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
               Container(
                 padding: EdgeInsets.all(1),
                 child: TextFormField(
-                  initialValue: _formData['tradeIn'],
+                  initialValue: _formData['tipo'],
                   decoration: InputDecoration(
                     labelText: 'Tipo',
                     border: OutlineInputBorder(),
@@ -383,7 +383,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
                     decimal: false,
                   ),
                   //onSaved vai executar o _saveForm
-                  onSaved: (value) => _formData['tradeIn'] = value,
+                  onSaved: (value) => _formData['tipo'] = value,
                 ),
               ),
               GestureDetector(
