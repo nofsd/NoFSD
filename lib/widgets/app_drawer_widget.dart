@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:hack_infor/auth/firebase/firebase_service.dart';
+import 'package:hack_infor/auth/provider/auth.dart';
 import 'package:hack_infor/utils/app_rotas.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   get body => null;
@@ -11,6 +13,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseService firebaseService = FirebaseService();
+    final auth = Provider.of<Auth>(context);
     Future<FirebaseUser> future = FirebaseAuth.instance.currentUser();
 
     return Drawer(
@@ -129,6 +132,7 @@ class AppDrawer extends StatelessWidget {
                   : RaisedButton(
                       onPressed: () {
                         firebaseService.logout();
+                        auth.logout();
                         Navigator.of(context).pushNamed(AppRotas.AUTH_HOME);
                       },
                       child: Text('Sair'),
@@ -181,6 +185,15 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                     //Navigator.of(context).pushNamed(AppRotas.MOBILE_CONTROLE);
                   },
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      firebaseService.logout();
+                      auth.logout();
+                    },
+                    child: Icon(Icons.outbond),
+                  ),
                 ),
               ],
             ),
