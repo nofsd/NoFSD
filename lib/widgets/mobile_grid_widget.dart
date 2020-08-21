@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hack_infor/provider/mobiles_provider.dart';
 import 'package:hack_infor/widgets/mobile_grid_item_widget.dart';
 import 'package:hack_infor/widgets/mobile_grid_item_widget2.dart';
+import 'package:hack_infor/widgets/mobile_grid_item_widget3.dart';
 import 'package:provider/provider.dart';
 
 class MobileGridWidget extends StatelessWidget {
@@ -20,7 +21,7 @@ class MobileGridWidget extends StatelessWidget {
             elevation: 10,
             borderRadius: BorderRadius.circular(51),
             child: Container(
-              child: MobileGridItemWidget2(),
+              child: MobileGridItemWidget3(),
             ),
           ),
         ),

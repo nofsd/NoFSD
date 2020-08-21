@@ -3,7 +3,7 @@ import 'package:hack_infor/models/mobile_model.dart';
 import 'package:hack_infor/utils/app_rotas.dart';
 import 'package:provider/provider.dart';
 
-class MobileGridItemWidget2 extends StatelessWidget {
+class MobileGridItemWidget3 extends StatelessWidget {
   final String titulo;
   Color cor1 = Colors.grey[900].withOpacity(0.5);
   Color cor2 = Colors.blueGrey.withOpacity(0.5);
@@ -15,7 +15,7 @@ class MobileGridItemWidget2 extends StatelessWidget {
   Color corIcone;
   Icon icon;
 
-  MobileGridItemWidget2({
+  MobileGridItemWidget3({
     this.titulo,
     //this.cor1,
     //this.cor2,
@@ -98,11 +98,11 @@ class MobileGridItemWidget2 extends StatelessWidget {
               arguments: mobile,
             );
           },
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(10),
           splashColor: Theme.of(context).primaryColor,
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(1),
+              borderRadius: BorderRadius.circular(100),
               gradient: LinearGradient(
                 colors: [
                   cor1,

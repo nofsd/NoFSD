@@ -3,7 +3,7 @@ import 'package:hack_infor/models/mobile_model.dart';
 import 'package:hack_infor/widgets/app_bottom_navigation_bar.dart';
 import 'package:hack_infor/widgets/mobile_detalhe_top_widget.dart';
 
-class MobileDetalhesScreen extends StatelessWidget {
+class MobileDetalhesScreen2 extends StatelessWidget {
   Widget _createSectionContainerFunci(Widget child) {
     return Container(
         width: 350,

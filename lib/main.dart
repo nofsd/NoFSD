@@ -5,6 +5,7 @@ import 'package:hack_infor/auth/screens/auth_home_screen.dart';
 import 'package:hack_infor/provider/mobiles_provider.dart';
 import 'package:hack_infor/screens/home_screen.dart';
 import 'package:hack_infor/screens/mobile_detalhes_screen.dart';
+import 'package:hack_infor/screens/mobile_detalhes_screen2.dart';
 import 'package:hack_infor/screens/mobile_form_screen.dart';
 import 'package:hack_infor/screens/chips_form_screen.dart';
 import 'package:hack_infor/screens/mobiles_manager_screen.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
           //AppRotas.MOBILE_USUARIOS: (ctx) => UsuariosFormScreen(),
           //AppRotas.MOBILE_CONTROLE: (ctx) => ControleFormScreen(),
           AppRotas.MOBILE_DETALHES: (ctx) => MobileDetalhesScreen(),
+          AppRotas.MOBILE_DETALHES2: (ctx) => MobileDetalhesScreen2(),
           AppRotas.GERENCIAR_MOBILES: (ctx) => MobilesManagerScreen(),
         },
       ),
