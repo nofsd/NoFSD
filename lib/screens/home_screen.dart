@@ -106,8 +106,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           //    color: Colors.amberAccent),
                                         ),
                                       ),
-                                      textInputAction: TextInputAction
-                                          .next, // muda para o próximo
+                                      textInputAction: TextInputAction.next,
+                                      onFieldSubmitted:
+                                          (_) {}, // muda para o próximo
                                     ),
                                   ),
                                 ),
