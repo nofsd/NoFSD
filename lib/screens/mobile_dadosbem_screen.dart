@@ -6,7 +6,7 @@ class MobileDetalhesDadosBem extends StatelessWidget {
   Widget _createSectionContainerMobile(Widget child) {
     return Container(
         width: 350,
-        height: 190,
+        height: 300,
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
@@ -28,7 +28,7 @@ class MobileDetalhesDadosBem extends StatelessWidget {
       'Marca: ${mobile.marca}',
       'Modelo: ${mobile.modelo}',
       'Operadora: ${mobile.operadora}',
-      'Marca: ${mobile.marca}',
+      'Marca: ${mobile.pin}',
     ];
     return SingleChildScrollView(
       child: Column(

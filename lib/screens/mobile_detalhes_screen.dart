@@ -34,7 +34,7 @@ class _MobileDetalhesScreenState extends State<MobileDetalhesScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(mobile.usuario),
+        title: Text(mobile.prv),
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
@@ -46,17 +46,17 @@ class _MobileDetalhesScreenState extends State<MobileDetalhesScreen> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.edit),
+            icon: Icon(Icons.dashboard),
             title: Text('Dados'),
             backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.delete),
+            icon: Icon(Icons.link),
             title: Text('Vínculo'),
             backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.delete),
+            icon: Icon(Icons.history),
             title: Text('Histórico'),
             backgroundColor: Theme.of(context).primaryColor,
           ),

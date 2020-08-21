@@ -36,7 +36,7 @@ class MobileDetalheTopWidget extends StatelessWidget {
                     horizontal: 20,
                   ),
                   child: Text(
-                    mobile.prv,
+                    mobile.usuario,
                     style: TextStyle(
                       fontSize: 26,
                       color: Colors.white,
@@ -66,11 +66,11 @@ class MobileDetalheTopWidget extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Icon(Icons.picture_in_picture),
+                    Icon(Icons.memory),
                     SizedBox(
                       width: 7,
                     ),
-                    Text('${mobile.imei}'),
+                    Text('${mobile.pin}'),
                   ],
                 ),
               ],

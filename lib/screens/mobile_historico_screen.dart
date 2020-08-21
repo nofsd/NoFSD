@@ -6,7 +6,7 @@ class MobileDetalhesHistoricoScreen extends StatelessWidget {
   Widget _createSectionContainerFunci(Widget child) {
     return Container(
         width: 350,
-        height: 130,
+        height: 100,
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
@@ -21,7 +21,10 @@ class MobileDetalhesHistoricoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final MobileModel mobile =
         ModalRoute.of(context).settings.arguments as MobileModel;
-    List dadosFunci = ['PRV: ${mobile.prv}', '', ''];
+    List dadosHistorico = [
+      'Data Locacao: ${mobile.dataLocacao}',
+      'Data Devolucao: ${mobile.dataDevolucao}',
+    ];
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -35,7 +38,7 @@ class MobileDetalhesHistoricoScreen extends StatelessWidget {
           ),
           _createSectionContainerFunci(
             ListView.builder(
-              itemCount: dadosFunci.length,
+              itemCount: dadosHistorico.length,
               itemBuilder: (ctx, index) {
                 return Card(
                   color: Colors.black54,
@@ -45,7 +48,7 @@ class MobileDetalhesHistoricoScreen extends StatelessWidget {
                       horizontal: 10,
                     ),
                     child: Text(
-                      dadosFunci[index],
+                      dadosHistorico[index],
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

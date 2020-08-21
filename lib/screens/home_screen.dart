@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_infor/auth/firebase/firebase_service.dart';
+import 'package:hack_infor/models/mobile_model.dart';
 import 'package:hack_infor/provider/mobiles_provider.dart';
 import 'package:hack_infor/utils/app_rotas.dart';
 import 'package:hack_infor/widgets/app_drawer_widget.dart';
