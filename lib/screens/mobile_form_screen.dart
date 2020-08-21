@@ -129,7 +129,7 @@ class _MobileFormScreenState extends State<MobileFormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vincular Aparelho Mobile'),
+        title: Text('Vincular Ativo Fixo'),
         actions: [
           IconButton(
             icon: Icon(Icons.save),

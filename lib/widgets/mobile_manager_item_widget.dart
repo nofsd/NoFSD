@@ -53,7 +53,10 @@ class MobileManagerItemWidget extends StatelessWidget {
             backgroundColor: corIcone,
             backgroundImage: imageIcone,
           ),
-          title: Text(mobile.prv),
+          title: Text(
+            mobile.prv,
+            style: TextStyle(fontSize: 25),
+          ),
           trailing: Container(
             width: 100,
             child: Row(
