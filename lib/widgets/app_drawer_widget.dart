@@ -151,18 +151,6 @@ class AppDrawer extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  leading: Icon(Icons.edit),
-                  title: Text(
-                    'Gerenciar Ativos',
-                    //textAlign: TextAlign.center,
-                  ),
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(AppRotas.GERENCIAR_MOBILES);
-                  },
-                ),
-                Divider(),
-                ListTile(
                   title: Text(
                     "Solicitar",
                     //textAlign: TextAlign.center,
