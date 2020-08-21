@@ -7,10 +7,41 @@ import 'package:provider/provider.dart';
 
 class MobileManagerItemWidget extends StatelessWidget {
   final MobileModel mobile;
-  const MobileManagerItemWidget({this.mobile});
+  Color corIcone;
+  AssetImage imageIcone;
+  MobileManagerItemWidget({this.mobile});
+
   @override
   Widget build(BuildContext context) {
     final scaffold = Scaffold.of(context);
+    //final MobileModel ativo = Provider.of<MobileModel>(context, listen: false);
+    if (mobile.status == null) {}
+    if (mobile.status == 1) {
+      corIcone = Colors.tealAccent;
+    }
+    if (mobile.status == 2) {
+      corIcone = Colors.redAccent;
+    }
+    if (mobile.status == 3) {
+      corIcone = Colors.orangeAccent;
+    }
+
+    if (mobile.tipo == null) {
+      imageIcone = null;
+    }
+    if (mobile.tipo == 1) {
+      imageIcone = AssetImage('assets/images/chip01.png');
+    }
+    if (mobile.tipo == 2) {
+      imageIcone = AssetImage('assets/images/cel01.png');
+    }
+    if (mobile.tipo == 3) {
+      imageIcone = AssetImage('assets/images/ipad01.png');
+    }
+    if (mobile.tipo == 4) {
+      imageIcone = AssetImage('assets/images/equip_comp_01.png');
+    }
+
     return Material(
       color: Colors.white70,
       elevation: 10,
@@ -19,8 +50,9 @@ class MobileManagerItemWidget extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: ListTile(
           leading: CircleAvatar(
-              //backgroundImage: NetworkImage(mobile),
-              ),
+            backgroundColor: corIcone,
+            backgroundImage: imageIcone,
+          ),
           title: Text(mobile.prv),
           trailing: Container(
             width: 100,
